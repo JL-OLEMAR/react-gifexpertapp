@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react'
 
-import { getGifs } from '../services/getGifs.js'
+import { getGifs } from '../services'
 
-export const useFetchGifs = (category) => {
-  const [state, setState] = useState({ data: [], loading: true })
+export function useFetchGifs(category) {
+  const [state, setState] = useState({ images: [], isLoading: true })
+
+  const { images, isLoading } = state
 
   useEffect(() => {
     getGifs(category).then((imgs) => {
-      setState({ data: imgs, loading: false })
+      setState({ images: imgs, isLoading: false })
     })
   }, [category])
 
-  return state // {data:[], loading:true}
+  return { images, isLoading }
 }
