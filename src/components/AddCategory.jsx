@@ -17,7 +17,7 @@ export function AddCategory({ onNewCategory }) {
   }
 
   return (
-    <form onSubmit={onSubmit}>
+    <form aria-label='form' onSubmit={onSubmit}>
       <input
         placeholder='Search gifs...'
         type='text'
